@@ -1,10 +1,34 @@
+<?php 
+// если была нажата кнопка "Отправить" 
+if($_POST['submit']) {
+	$title = substr(htmlspecialchars(trim($_POST['title'])), 0, 1000); 
+	$mess =  substr(htmlspecialchars(trim($_POST['mess'])), 0, 1000000); 
+	// $to - кому отправляем 
+	$to = 'tempformemsg@mail.ru'; 
+	// $from - от кого 
+	$from='tempformemsg@mail.ru'; 
+	// функция, которая отправляет наше письмо
+	mail($to, $title, $mess, 'From:'.$from); 
+	echo 'Спасибо! Ваше письмо отправлено.'; 
+} 
+?>
+
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta content="text/html; charset=utf-8" http-equiv="content-type">
-		<title>zz</title>
-	</head>
-	<body>
-    <a href="../index.php">zzz</a>
-	</body>
+<head>
+	<title>Задание 5</title>
+</head>
+<body>
+	<a href="../index.php">zzz</a>
+	<form action="" method=post> 
+	<p>Вводный текст перед формой <p> 
+	<div align="center"> 
+	Teма<br /> 
+	<input type="text" name="title" size="40"><br /> 
+	Сообщение<br /> 
+	<textarea name="mess" rows="10" cols="40"></textarea> 
+	<br /> 
+	<input type="submit" value="Отправить" name="submit"></div> 
+	</form>
+</body>
 </html>
